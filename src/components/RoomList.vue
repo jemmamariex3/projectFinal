@@ -4,7 +4,7 @@
       <h2>
         Room List
         <b-link href="#/add-room">(Add Room)</b-link>
-        <!--<b-link @click="logout()">(Logout)</b-link>-->
+        <b-link @click="logout()">(Sign-Out)</b-link>
       </h2>
       <b-table striped hover :items="rooms" :fields="fields">
         <template slot="actions" scope="row">

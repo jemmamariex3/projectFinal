@@ -8,11 +8,12 @@ var bodyParser = require('body-parser');
 var room = require('./routes/room');
 var chat = require('./routes/chat');
 var app = express();
+var auth = require('./routes/auth');
 
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
-mongoose.connect('mongodb://localhost:27017/mevn-chat', { useNewUrlParser: true, promiseLibrary: require('bluebird') })
-  .then(() =>  console.log('connection succesful'))
+mongoose.connect('mongodb://localhost:27017/projectFinal', { useNewUrlParser: true, promiseLibrary: require('bluebird') })
+  .then(() =>  console.log('connection succesful\nGo to: localhost:3000'))
   .catch((err) => console.error(err));
 
 app.use(logger('dev'));
@@ -22,6 +23,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 app.use('/rooms', express.static(path.join(__dirname, 'dist')));
 app.use('/api/room', room);
 app.use('/api/chat', chat);
+app.use('/api/auth', auth);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
